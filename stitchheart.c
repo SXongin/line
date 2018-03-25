@@ -2,8 +2,8 @@
 #include <math.h>   // ceilf(), floorf(), fminf(), fmaxf(), sinf(), cosf(), sqrtf()
 #include <string.h> // memset()
 #define PI 3.14159265359f
-#define W 1024
-#define H 1024
+#define W 512
+#define H 512
 static unsigned char img[W * H * 3];
 
 float capsuleSDF(float px, float py, float ax, float ay, float bx, float by, float r) {
@@ -35,8 +35,8 @@ int main() {
     float cx = W * 0.5f, cy = H * 0.5f;
     float r = fminf(W, H) * 0.45f;
 #define S(a, b) lineSDFAABB(cx + r * cosf(a), cy - r * sinf(a), cx + r * cosf(b), cy - r * sinf(b), 0.5f)
-    for (int i = 0; i <= 64; i++) {
-        float t = i * (0.5f * PI / 64.0f);
+    for (int i = 1; i <= 32; i++) {
+        float t = i * (0.5f * PI / 32.0f);
         S(t, t - PI * 0.5f);
         S(t + PI, t + PI * 0.5f);
         S(t, t * 2.0f + PI * 0.5f);
