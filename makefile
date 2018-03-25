@@ -24,4 +24,4 @@ line_montage_zoom.png: $(CROP)
 	montage -label '%t' $(CROP) -geometry '1x1+2+2<' -tile x1 $@
 
 clean:
-	rm $(TARGETS) *.png
+	rm $(TARGETS) stitchheart *.png
